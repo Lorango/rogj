@@ -41,3 +41,20 @@ xlim([0, 3000]) % kHz
 [pks,locs] = findpeaks(10*log10(abs(h)));
 
 text(w_x(locs), pks, num2str((1:numel(pks))'))
+%% korjeni bay root
+% find frequencies by root-solving
+a = mat(33,:);
+
+r=roots(a);                  % find roots of polynomial a
+
+r=r(imag(r)>0.01);           % only look for roots >0Hz up to fs/2
+
+ffreq=sort(atan2(imag(r),real(r))*sampling_frequency/(2*pi));
+
+                             % convert to Hz and sort
+
+for i=1:length(ffreq)
+
+    fprintf('Formant %d Frequency %.1f\n',i,ffreq(i));
+
+end
