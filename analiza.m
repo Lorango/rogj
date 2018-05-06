@@ -3,7 +3,7 @@ clear all
 close all
 
 %%
-load('lpc\a.mat', 'mat')
+load('lpc\slovo_a.mat', 'slovo_a')
 sampling_frequency = 48000;
 
 %%
@@ -14,7 +14,7 @@ for i=1:33
 %{
 Racuna formatne frekvecije
 %}
-    a = mat(i, :); % nazivnik - lpc koeficijenti
+    a = slovo_a(i, :); % nazivnik - lpc koeficijenti
     [h,w]=freqz(1, a, 1000); % frekvencijski odziv filtra
 %{
 Pronalaženje fromantnih frekvencija putem korjena nazivnika.
@@ -39,21 +39,21 @@ Ispisuje izraèunate formantne frekvencije.
 Plota korak po korak frekvencijske odzive i prikazuje sve formante koje 
 more nac.
 %}
-    w_x=w*sampling_frequency/(2*pi);
-    
-    plot(w_x,10*log10(abs(h)));
-    hold on
-
-    [pks,locs] = findpeaks(10*log10(abs(h)));
-    
-    text(w_x(locs), pks, num2str((1:numel(pks))'))
-    scatter(w_x(locs), pks, 'x')
-    stem([f_1(i), f_2(i), f_3(i)], 30*[1, 1, 1]);
-    
-    grid on
-    xlim([0, 8000]) % Hz
-    hold off
-    pause
+%     w_x=w*sampling_frequency/(2*pi);
+%     
+%     plot(w_x,10*log10(abs(h)));
+%     hold on
+% 
+%     [pks,locs] = findpeaks(10*log10(abs(h)));
+%     
+%     text(w_x(locs), pks, num2str((1:numel(pks))'))
+%     scatter(w_x(locs), pks, 'x')
+%     stem([f_1(i), f_2(i), f_3(i)], 30*[1, 1, 1]);
+%     
+%     grid on
+%     xlim([0, 8000]) % Hz
+%     hold off
+%     pause
 end
 %% plotanje formanti
 figure
