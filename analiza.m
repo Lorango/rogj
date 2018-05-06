@@ -3,7 +3,7 @@ clear all
 close all
 
 %%
-load('test.mat', 'mat')
+load('lpc\a.mat', 'mat')
 sampling_frequency = 48000;
 
 %%
