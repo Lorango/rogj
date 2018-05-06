@@ -16,9 +16,7 @@ Racuna formatne frekvecije
 %}
     a = mat(i, :); % nazivnik - lpc koeficijenti
     [h,w]=freqz(1, a, 1000); % frekvencijski odziv filtra
-%{
-Pronalaženje fromantnih frekvencija putem korjena nazivnika.
-%}
+    
     r=roots(a); % find roots of polynomial a
     r=r(imag(r)>0.01); % only look for roots >0Hz up to fs/2
     
@@ -39,16 +37,16 @@ Ispisuje izraèunate formantne frekvencije.
 Plota korak po korak frekvencijske odzive i prikazuje sve formante koje 
 more nac.
 %}
-%     w_x=w*sampling_frequency/(2*pi);
-%     
-%     plot(w_x,10*log10(abs(h)));
-%     grid on
-%     xlim([0, 8000]) % Hz
-%     
-%     [pks,locs] = findpeaks(10*log10(abs(h)));
-%     text(w_x(locs), pks, num2str((1:numel(pks))'))
-%     
-%     pause
+    w_x=w*sampling_frequency/(2*pi);
+    
+    plot(w_x,10*log10(abs(h)));
+    grid on
+    xlim([0, 8000]) % Hz
+    
+    [pks,locs] = findpeaks(10*log10(abs(h)));
+    text(w_x(locs), pks, num2str((1:numel(pks))'))
+    
+    pause
 end
 %% plotanje formanti
 figure
