@@ -20,7 +20,7 @@ Racuna formatne frekvecije
 Pronalaženje fromantnih frekvencija putem korjena nazivnika.
 %}
     r=roots(a); % find roots of polynomial a
-    r=r(imag(r)>0.01); % only look for roots >0Hz up to fs/2
+    r=r(imag(r)>0.001); % only look for roots >0Hz up to fs/2
     
     ffreq=sort(atan2(imag(r),real(r))*sampling_frequency/(2*pi)); % convert to Hz and sort
     f_1 = [f_1; ffreq(1)];
@@ -30,25 +30,30 @@ Pronalaženje fromantnih frekvencija putem korjena nazivnika.
 %{
 Ispisuje izraèunate formantne frekvencije.
 %}
-    fprintf('Prozor %d\n', i);
-    fprintf('Formant 1 Frequency %.1f\n', f_1(i));
-    fprintf('Formant 2 Frequency %.1f\n', f_2(i));
-    fprintf('Formant 3 Frequency %.1f\n', f_3(i));
+%     fprintf('Prozor %d\n', i);
+%     fprintf('Formant 1 Frequency %.1f\n', f_1(i));
+%     fprintf('Formant 2 Frequency %.1f\n', f_2(i));
+%     fprintf('Formant 3 Frequency %.1f\n', f_3(i));
 
 %{
 Plota korak po korak frekvencijske odzive i prikazuje sve formante koje 
 more nac.
 %}
-%     w_x=w*sampling_frequency/(2*pi);
-%     
-%     plot(w_x,10*log10(abs(h)));
-%     grid on
-%     xlim([0, 8000]) % Hz
-%     
-%     [pks,locs] = findpeaks(10*log10(abs(h)));
-%     text(w_x(locs), pks, num2str((1:numel(pks))'))
-%     
-%     pause
+    w_x=w*sampling_frequency/(2*pi);
+    
+    plot(w_x,10*log10(abs(h)));
+    hold on
+
+    [pks,locs] = findpeaks(10*log10(abs(h)));
+    
+    text(w_x(locs), pks, num2str((1:numel(pks))'))
+    scatter(w_x(locs), pks, 'x')
+    stem([f_1(i), f_2(i), f_3(i)], 30*[1, 1, 1]);
+    
+    grid on
+    xlim([0, 8000]) % Hz
+    hold off
+    pause
 end
 %% plotanje formanti
 figure
