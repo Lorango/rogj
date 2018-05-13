@@ -2,7 +2,7 @@ clc
 clear all
 close all
 %%
-[uzorci, sampling_frequency] = audioread('.\zvuci\20.wav');
+[uzorci, sampling_frequency] = audioread('.\zvuci\28.wav');
 broj_uzoraka = size(uzorci, 1);
 
 %%

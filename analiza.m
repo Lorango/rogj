@@ -65,5 +65,6 @@ scatter(f_2, f_3)
 xlim([0, 1400]) % Hz
 ylim([0, 1400]) % Hz
 legend('x: f_1, y: f_2', 'x: f_1, y: f_3', 'x: f_2, y: f_3')
-
+%% 
+save('AAA.mat','f_1', 'f_2', 'f_3')
 
