@@ -5,11 +5,21 @@ clear all
 close all
 
 %%
+a = dir('sm04_lab');
+
+
+%%
 filename = 'sm04_lab/sm04010103201.lab';
 
 A = readtable(filename, 'FileType', 'text',....
     'Format', '%u%u%s',....
     'Delimiter',' ','ReadVariableNames',false)
+
+
+%%
+[samples, sampling_frequency] = audioread('sm04_wav/sm04010103201.wav');
+
+%%
 
 %%
 [uzorci, sampling_frequency] = audioread('.\zvuci\28.wav');
