@@ -7,21 +7,52 @@ clc
 clear all
 close all
 
-%%
-slovo_a = [];
-slovo_e = [];
-slovo_i = [];
-slovo_o = [];
-slovo_u = [];
-
+%% broj koeficijenata
+koef_n = 96;
 skip = 0;
-%%
-%%
-file_list = dir('sm04_lab/*.lab');
-%%
 
-for index_file = 360:360%size(file_list, 1)
-    file_name_lab = strcat('sm04_lab/', file_list(index_file).name)
+index_lpc_aeiou = ones(1, 5);
+%% pred prolaz kroz fajlove da se odredi broj samoglsnika
+counter_aeiou = zeros(1,5);
+file_list = dir('sm04_lab/*.lab');
+for index_file = 1:size(file_list, 1)
+    file_name_lab = strcat('sm04_lab/', file_list(index_file).name);
+    
+    % Load .lab file as table. 
+    label = readtable(file_name_lab, 'FileType', 'text',....
+        'Format', '%u%u%s',....
+        'ReadVariableNames', false);
+
+    % Rename proprerty/columns names in table.
+    label.Properties.VariableNames = {'Start', 'Stop', 'Label'};
+
+    for index_zvuk = 1:size(label, 1)
+        % Comparing two strings. strcmp(s1, s2)
+        % Find all [samoglasnik] fonems in label file.
+        fonem = strrep(label.Label(index_zvuk), ':', '');
+        if strcmp(fonem, 'a')
+            counter_aeiou(1) = counter_aeiou(1) + 1;
+        elseif strcmp(fonem, 'e')
+            counter_aeiou(2) = counter_aeiou(2) + 1;
+        elseif strcmp(fonem, 'i')
+            counter_aeiou(3) = counter_aeiou(3) + 1;
+        elseif strcmp(fonem, 'o')
+            counter_aeiou(4) = counter_aeiou(4) + 1;
+        elseif strcmp(fonem, 'u')
+            counter_aeiou(5) = counter_aeiou(5) + 1;
+        end
+    end
+end
+
+%%
+slovo_a = zeros(counter_aeiou(1), koef_n + 1);
+slovo_e = zeros(counter_aeiou(2), koef_n + 1);
+slovo_i = zeros(counter_aeiou(3), koef_n + 1);
+slovo_o = zeros(counter_aeiou(4), koef_n + 1);
+slovo_u = zeros(counter_aeiou(5), koef_n + 1);
+%%
+for index_file = 1:1%size(file_list, 1)
+    file_name_lab = strcat('sm04_lab/', file_list(index_file).name);
     file_name_wav = strrep(file_name_lab, 'lab', 'wav');
     
     % Load .lab file as table. 
@@ -58,34 +89,55 @@ for index_file = 360:360%size(file_list, 1)
                 ostatak = rem(sample_delta, window_half_width);
                 broj_koraka = djelj - 2;
                 for index_sample = 0:broj_koraka
-                    start = sample_start + index_sample*window_half_width
-                    stop = sample_stop + index_sample*window_half_width
+                    start = sample_start + index_sample*window_half_width;
+                    stop = sample_stop + index_sample*window_half_width;
                     [lpc_koef, greska] = lpc(samples(start:stop), 96);
+                    disp(fonem)
                     if strcmp(fonem, 'a')
-                        slovo_a = [slovo_a; lpc_koef];
+                        slovo_a(index_lpc_aeiou(1), :) = lpc_koef;
+                        index_lpc_aeiou(1) = index_lpc_aeiou(1) + 1;
+                        
                     elseif strcmp(fonem, 'e')
-                        slovo_e = [slovo_e; lpc_koef];
+                        slovo_e(index_lpc_aeiou(2), :) = lpc_koef;
+                        index_lpc_aeiou(2) = index_lpc_aeiou(2) + 1;
+                        
                     elseif strcmp(fonem, 'i')
-                        slovo_i = [slovo_i; lpc_koef];
+                        slovo_i(index_lpc_aeiou(3), :) = lpc_koef;
+                        index_lpc_aeiou(3) = index_lpc_aeiou(3) + 1;
+                        
                     elseif strcmp(fonem, 'o')
-                        slovo_o = [slovo_o; lpc_koef];
+                        slovo_o(index_lpc_aeiou(4), :) = lpc_koef;
+                        index_lpc_aeiou(4) = index_lpc_aeiou(4) + 1;
+                        
                     elseif strcmp(fonem, 'u')
-                        slovo_u = [slovo_u; lpc_koef];
+                        slovo_u(index_lpc_aeiou(5), :) = lpc_koef;
+                        index_lpc_aeiou(5) = index_lpc_aeiou(5) + 1;
+                        
                     end
                 end
 
                 if ostatak > 0
                     [lpc_koef, greska] = lpc(samples(start + ostatak:stop + ostatak), 96);
                     if strcmp(fonem, 'a')
-                        slovo_a = [slovo_a; lpc_koef];
+                        slovo_a(index_lpc_aeiou(1), :) = lpc_koef;
+                        index_lpc_aeiou(1) = index_lpc_aeiou(1) + 1;
+                        
                     elseif strcmp(fonem, 'e')
-                        slovo_e = [slovo_e; lpc_koef];
+                        slovo_e(index_lpc_aeiou(2), :) = lpc_koef;
+                        index_lpc_aeiou(2) = index_lpc_aeiou(2) + 1;
+                        
                     elseif strcmp(fonem, 'i')
-                        slovo_i = [slovo_i; lpc_koef];
+                        slovo_i(index_lpc_aeiou(3), :) = lpc_koef;
+                        index_lpc_aeiou(3) = index_lpc_aeiou(3) + 1;
+                        
                     elseif strcmp(fonem, 'o')
-                        slovo_o = [slovo_o; lpc_koef];
+                        slovo_o(index_lpc_aeiou(4), :) = lpc_koef;
+                        index_lpc_aeiou(4) = index_lpc_aeiou(4) + 1;
+                        
                     elseif strcmp(fonem, 'u')
-                        slovo_u = [slovo_u; lpc_koef];
+                        slovo_u(index_lpc_aeiou(5), :) = lpc_koef;
+                        index_lpc_aeiou(5) = index_lpc_aeiou(5) + 1;
+                        
                     end
                 end
             else
