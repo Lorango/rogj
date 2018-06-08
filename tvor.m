@@ -32,7 +32,7 @@ for index_file = 360:360%size(file_list, 1)
     % Rename proprerty/columns names in table.
     label.Properties.VariableNames = {'Start', 'Stop', 'Label'};
     
-    [samples, sampling_frequency] = audioread('sm04_wav/sm04010103201.wav');
+    [samples, sampling_frequency] = audioread(file_name_wav);
 
     % Faktor kojim se množe vremena zvukova kako bi se dobil broj uzorka.
     time_factor = sampling_frequency * 0.1e-6;
