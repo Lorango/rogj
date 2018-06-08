@@ -52,7 +52,11 @@ slovo_o = zeros(counter_aeiou(4), koef_n + 1);
 slovo_u = zeros(counter_aeiou(5), koef_n + 1);
 %%
 for index_file = 1:size(file_list, 1)
-    file_name_lab = strcat('sm04_lab/', file_list(index_file).name)
+    %pokazatelj napredka
+    if rem(index_file, 100) == 0
+        fprintf('%d/%d\n', index_file, size(file_list, 1))
+    end
+    file_name_lab = strcat('sm04_lab/', file_list(index_file).name);
     file_name_wav = strrep(file_name_lab, 'lab', 'wav');
     
     % Load .lab file as table. 
@@ -71,10 +75,6 @@ for index_file = 1:size(file_list, 1)
     window_half_width = window_width  / 2;
 
     for index_zvuk = 1:size(label, 1)
-        %pokazatelj napredka
-        if rem(index_file, 100) == 0:
-            fprintf('%s', 'kruh')
-        end
         % Comparing two strings. strcmp(s1, s2)
         % Find all [samoglasnik] fonems in label file.
         fonem = strrep(label.Label(index_zvuk), ':', '');
