@@ -8,6 +8,7 @@ clear all
 close all
 
 %% broj koeficijenata
+disp('Pocetak analize. Estimacija potrebne memorije koju treba zauzeti.')
 koef_n = 96;
 skip = 0;
 
@@ -53,6 +54,7 @@ slovo_i = zeros(counter_aeiou(3), koef_n + 1);
 slovo_o = zeros(counter_aeiou(4), koef_n + 1);
 slovo_u = zeros(counter_aeiou(5), koef_n + 1);
 %%
+disp('Proracun lpc-a.')
 for index_file = 1:size(file_list, 1)
     %pokazatelj napredka
     if rem(index_file, 100) == 0
@@ -153,16 +155,19 @@ for index_file = 1:size(file_list, 1)
         end
     end
 end
+disp('Kraj proracuna.')
 disp('Broj preskoèenih samoglasnika jer su prekratki')
 disp(skip)
 
 %% Izrezivanje neiskorištenoga dijela arraya
-s_slovo_a = slovo_a(1:index_lpc_aeiou(1) - 1, :);
-s_slovo_e = slovo_e(1:index_lpc_aeiou(2) - 1, :);
-s_slovo_i = slovo_i(1:index_lpc_aeiou(3) - 1, :);
-s_slovo_o = slovo_o(1:index_lpc_aeiou(4) - 1, :);
-s_slovo_u = slovo_u(1:index_lpc_aeiou(5) - 1, :);
+slovo_a = slovo_a(1:index_lpc_aeiou(1) - 1, :);
+slovo_e = slovo_e(1:index_lpc_aeiou(2) - 1, :);
+slovo_i = slovo_i(1:index_lpc_aeiou(3) - 1, :);
+slovo_o = slovo_o(1:index_lpc_aeiou(4) - 1, :);
+slovo_u = slovo_u(1:index_lpc_aeiou(5) - 1, :);
 
 %% Spremanje rezultata u datoteke
 
-save('lpc\lpc_pro.mat', 's_slovo_a', 's_slovo_e', 's_slovo_i', 's_slovo_o', 's_slovo_u')
+save('lpc\lpc_pro.mat', 'slovo_a', 'slovo_e', 'slovo_i', 'slovo_o', 'slovo_u', 'sampling_frequency')
+disp('Podatci pohranjeni. Gotovo!')
+
