@@ -51,8 +51,8 @@ slovo_i = zeros(counter_aeiou(3), koef_n + 1);
 slovo_o = zeros(counter_aeiou(4), koef_n + 1);
 slovo_u = zeros(counter_aeiou(5), koef_n + 1);
 %%
-for index_file = 1:1%size(file_list, 1)
-    file_name_lab = strcat('sm04_lab/', file_list(index_file).name);
+for index_file = 1:size(file_list, 1)
+    file_name_lab = strcat('sm04_lab/', file_list(index_file).name)
     file_name_wav = strrep(file_name_lab, 'lab', 'wav');
     
     % Load .lab file as table. 
@@ -71,6 +71,10 @@ for index_file = 1:1%size(file_list, 1)
     window_half_width = window_width  / 2;
 
     for index_zvuk = 1:size(label, 1)
+        %pokazatelj napredka
+        if rem(index_file, 100) == 0:
+            fprintf('%s', 'kruh')
+        end
         % Comparing two strings. strcmp(s1, s2)
         % Find all [samoglasnik] fonems in label file.
         fonem = strrep(label.Label(index_zvuk), ':', '');
@@ -88,11 +92,12 @@ for index_file = 1:1%size(file_list, 1)
                 djelj = idivide(sample_delta, window_half_width);
                 ostatak = rem(sample_delta, window_half_width);
                 broj_koraka = djelj - 2;
+                
                 for index_sample = 0:broj_koraka
-                    start = sample_start + index_sample*window_half_width;
-                    stop = sample_stop + index_sample*window_half_width;
+                    start = sample_start + index_sample * window_half_width;
+                    stop = start + window_width;
                     [lpc_koef, greska] = lpc(samples(start:stop), 96);
-                    disp(fonem)
+                    
                     if strcmp(fonem, 'a')
                         slovo_a(index_lpc_aeiou(1), :) = lpc_koef;
                         index_lpc_aeiou(1) = index_lpc_aeiou(1) + 1;
