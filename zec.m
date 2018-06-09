@@ -7,17 +7,11 @@ load('lpc\lpc_pro.mat')
 
 %% za a
 %sadrži sve prva tri formanta za sve uzorke
-% f_a = zeros(size(slovo_a, 1), 3);
-% f_e = zeros(size(slovo_e, 1), 3);
-% f_i = zeros(size(slovo_i, 1), 3);
-% f_o = zeros(size(slovo_o, 1), 3);
-% f_u = zeros(size(slovo_u, 1), 3);
-
-f_a = zeros(5000, 3);
-f_e = zeros(5000, 3);
-f_i = zeros(5000, 3);
-f_o = zeros(5000, 3);
-f_u = zeros(5000, 3);
+f_a = zeros(size(slovo_a, 1), 3);
+f_e = zeros(size(slovo_e, 1), 3);
+f_i = zeros(size(slovo_i, 1), 3);
+f_o = zeros(size(slovo_o, 1), 3);
+f_u = zeros(size(slovo_u, 1), 3);
 
 
 %% Matlabov proracun a
@@ -104,54 +98,192 @@ for i = 1:size(f_u, 1)
     % izvlaèenje prva tri formanta
     f_u(i, :) = frqs(1:3);
 end
-%% plotanje formanti
-% figure
-% hold on
-% grid on
-% scatter(f_a(:, 1), f_a(:, 2))
-% scatter(f_a(:, 1), f_a(:, 3))
+%% plotanje formanti f1 f2
+close all
+figure
+scatter(f_a(:, 1), f_a(:, 2), 'r.')
+xlim([0, 1400]) % Hz
+ylim([0, 2500]) % Hz
+title('A f_1 f_2')
+xlabel('f_1 [Hz]')
+ylabel('f_2 [Hz]')
+grid on
+
+
+figure
+scatter(f_e(:, 1), f_e(:, 2), 'b.')
+xlim([0, 1400]) % Hz
+ylim([0, 2500]) % Hz
+title('E f_1 f_2')
+xlabel('f_1 [Hz]')
+ylabel('f_2 [Hz]')
+grid on
+
+figure
+scatter(f_i(:, 1), f_i(:, 2), 'y.')
+xlim([0, 1400]) % Hz
+ylim([0, 2500]) % Hz
+title('I f_1 f_2')
+xlabel('f_1 [Hz]')
+ylabel('f_2 [Hz]')
+grid on
+
+figure
+scatter(f_o(:, 1), f_o(:, 2), 'g.')
+xlim([0, 1400]) % Hz
+ylim([0, 2500]) % Hz
+title('O f_1 f_2')
+xlabel('f_1 [Hz]')
+ylabel('f_2 [Hz]')
+grid on
+
+figure
+scatter(f_u(:, 1), f_u(:, 2), 'k.')
+xlim([0, 1400]) % Hz
+ylim([0, 2500]) % Hz
+title('U f_1 f_2')
+xlabel('f_1 [Hz]')
+ylabel('f_2 [Hz]')
+grid on
 % scatter(f_a(:, 2), f_a(:, 3))
 % xlim([0, 1400]) % Hz
 % ylim([0, 1400]) % Hz
 % legend('x: f_1, y: f_2', 'x: f_1, y: f_3', 'x: f_2, y: f_3')
-%% 
-scatter3(f_a(:, 1), f_a(:, 2), f_a(:, 3), 'b')
-hold on
-scatter3(f_e(:, 1), f_e(:, 2), f_e(:, 3), 'r')
-scatter3(f_i(:, 1), f_i(:, 2), f_i(:, 3), 'g')
-scatter3(f_o(:, 1), f_o(:, 2), f_o(:, 3), 'y')
-scatter3(f_u(:, 1), f_u(:, 2), f_u(:, 3), 'c')
 
-xlabel('f_1 [Hz]')
-ylabel('f_2 [Hz]')
-zlabel('f_3 [Hz]')
-xlim([0, 1400]) % Hz
-ylim([0, 1400]) % Hz
-zlim([0, 1400]) % Hz
-grid on
-
-%% outline
-alfa = 0.1
-k = boundary(f_a(:, 1), f_a(:, 2), f_a(:, 3));
+%% plotanje formanti f1 f3
+close all
 figure
-trisurf(k, f_a(:, 1), f_a(:, 2), f_a(:, 3),'Facecolor','b','FaceAlpha', alfa, 'LineStyle', 'None')
-hold on
-k = boundary(f_e(:, 1), f_e(:, 2), f_e(:, 3));
-trisurf(k, f_e(:, 1), f_e(:, 2), f_e(:, 3),'Facecolor','r','FaceAlpha', alfa, 'LineStyle', 'None')
-
-k = boundary(f_i(:, 1), f_i(:, 2), f_i(:, 3));
-trisurf(k, f_i(:, 1), f_i(:, 2), f_i(:, 3),'Facecolor','g','FaceAlpha', alfa, 'LineStyle', 'None')
-
-k = boundary(f_o(:, 1), f_o(:, 2), f_o(:, 3));
-trisurf(k, f_o(:, 1), f_o(:, 2), f_o(:, 3),'Facecolor','y','FaceAlpha', alfa, 'LineStyle', 'None')
-
-k = boundary(f_u(:, 1), f_u(:, 2), f_u(:, 3));
-trisurf(k, f_u(:, 1), f_u(:, 2), f_u(:, 3),'Facecolor','c','FaceAlpha', alfa, 'LineStyle', 'None')
-
-xlabel('f_1 [Hz]')
-ylabel('f_2 [Hz]')
-zlabel('f_3 [Hz]')
+scatter(f_a(:, 1), f_a(:, 3), 'r.')
 xlim([0, 1400]) % Hz
-ylim([0, 1400]) % Hz
-zlim([0, 1400]) % Hz
+ylim([0, 3000]) % Hz
+title('A f_1 f_3')
+xlabel('f_1 [Hz]')
+ylabel('f_3 [Hz]')
 grid on
+
+
+figure
+scatter(f_e(:, 1), f_e(:, 3), 'b.')
+xlim([0, 1400]) % Hz
+ylim([0, 3000]) % Hz
+title('E f_1 f_3')
+xlabel('f_1 [Hz]')
+ylabel('f_3 [Hz]')
+grid on
+
+figure
+scatter(f_i(:, 1), f_i(:, 3), 'y.')
+xlim([0, 1400]) % Hz
+ylim([0, 3000]) % Hz
+title('I f_1 f_3')
+xlabel('f_1 [Hz]')
+ylabel('f_3 [Hz]')
+grid on
+
+figure
+scatter(f_o(:, 1), f_o(:, 3), 'g.')
+xlim([0, 1400]) % Hz
+ylim([0, 3000]) % Hz
+title('O f_1 f_3')
+xlabel('f_1 [Hz]')
+ylabel('f_3 [Hz]')
+grid on
+
+figure
+scatter(f_u(:, 1), f_u(:, 3), 'k.')
+xlim([0, 1400]) % Hz
+ylim([0, 3000]) % Hz
+title('U f_1 f_3')
+xlabel('f_1 [Hz]')
+ylabel('f_3 [Hz]')
+grid on
+
+%% plotanje formanti f2 f3
+close all
+figure
+scatter(f_a(:, 2), f_a(:, 3), 'r.')
+xlim([0, 1400]) % Hz
+ylim([0, 3000]) % Hz
+title('A f_2 f_3')
+xlabel('f_2 [Hz]')
+ylabel('f_3 [Hz]')
+grid on
+
+
+figure
+scatter(f_e(:, 2), f_e(:, 3), 'b.')
+xlim([0, 1400]) % Hz
+ylim([0, 3000]) % Hz
+title('E f_2 f_3')
+xlabel('f_2 [Hz]')
+ylabel('f_3 [Hz]')
+grid on
+
+figure
+scatter(f_i(:, 2), f_i(:, 3), 'y.')
+xlim([0, 1400]) % Hz
+ylim([0, 3000]) % Hz
+title('I f_2 f_3')
+xlabel('f_2 [Hz]')
+ylabel('f_3 [Hz]')
+grid on
+
+figure
+scatter(f_o(:, 2), f_o(:, 3), 'g.')
+xlim([0, 1400]) % Hz
+ylim([0, 3000]) % Hz
+title('O f_2 f_3')
+xlabel('f_2 [Hz]')
+ylabel('f_3 [Hz]')
+grid on
+
+figure
+scatter(f_u(:, 2), f_u(:, 3), 'k.')
+xlim([0, 1400]) % Hz
+ylim([0, 3000]) % Hz
+title('U f_2 f_3')
+xlabel('f_2 [Hz]')
+ylabel('f_3 [Hz]')
+grid on
+
+%% 
+% scatter3(f_a(:, 1), f_a(:, 2), f_a(:, 3), '.')
+% hold on
+% scatter3(f_e(:, 1), f_e(:, 2), f_e(:, 3), '.')
+% scatter3(f_i(:, 1), f_i(:, 2), f_i(:, 3), '.')
+% scatter3(f_o(:, 1), f_o(:, 2), f_o(:, 3), '.')
+% scatter3(f_u(:, 1), f_u(:, 2), f_u(:, 3), '.')
+% 
+% xlabel('f_1 [Hz]')
+% ylabel('f_2 [Hz]')
+% zlabel('f_3 [Hz]')
+% xlim([0, 1400]) % Hz
+% ylim([0, 2500]) % Hz
+% zlim([0, 3000]) % Hz
+% grid on
+% 
+% %% outline
+% alfa = 0.8
+% k = boundary(f_a(:, 1), f_a(:, 2), f_a(:, 3));
+% figure
+% trisurf(k, f_a(:, 1), f_a(:, 2), f_a(:, 3),'Facecolor','b','FaceAlpha', alfa, 'LineStyle', 'None')
+% hold on
+% k = boundary(f_e(:, 1), f_e(:, 2), f_e(:, 3));
+% trisurf(k, f_e(:, 1), f_e(:, 2), f_e(:, 3),'Facecolor','r','FaceAlpha', alfa, 'LineStyle', 'None')
+% 
+% k = boundary(f_i(:, 1), f_i(:, 2), f_i(:, 3));
+% trisurf(k, f_i(:, 1), f_i(:, 2), f_i(:, 3),'Facecolor','g','FaceAlpha', alfa, 'LineStyle', 'None')
+% 
+% k = boundary(f_o(:, 1), f_o(:, 2), f_o(:, 3));
+% trisurf(k, f_o(:, 1), f_o(:, 2), f_o(:, 3),'Facecolor','y','FaceAlpha', alfa, 'LineStyle', 'None')
+% 
+% k = boundary(f_u(:, 1), f_u(:, 2), f_u(:, 3));
+% trisurf(k, f_u(:, 1), f_u(:, 2), f_u(:, 3),'Facecolor','c','FaceAlpha', alfa, 'LineStyle', 'None')
+% 
+% xlabel('f_1 [Hz]')
+% ylabel('f_2 [Hz]')
+% zlabel('f_3 [Hz]')
+% xlim([0, 1400]) % Hz
+% ylim([0, 2500]) % Hz
+% zlim([0, 3000]) % Hz
+% grid on

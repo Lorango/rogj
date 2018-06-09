@@ -9,7 +9,7 @@ close all
 
 %% broj koeficijenata
 disp('Pocetak analize. Estimacija potrebne memorije koju treba zauzeti.')
-koef_n = 48;
+koef_n = 24;
 skip = 0;
 
 index_lpc_aeiou = ones(1, 5);
