@@ -3,7 +3,9 @@ function prikaz_ff( f_x, slovo, m, n, color, x_lim, y_lim, spremi, new_fig )
 %   Detailed explanation goes here
 
 if new_fig
-    figure
+%     figure
+    % naredba da prikaže figure na ful skrin
+    figure('units','normalized','outerposition',[0 0 1 1])
 else
     hold on
 end
