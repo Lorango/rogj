@@ -9,7 +9,7 @@ close all
 
 %% broj koeficijenata
 disp('Pocetak analize. Estimacija potrebne memorije koju treba zauzeti.')
-koef_n = 96;
+koef_n = 48;
 skip = 0;
 
 index_lpc_aeiou = ones(1, 5);
@@ -71,12 +71,16 @@ for index_file = 1:size(file_list, 1)
     % Rename proprerty/columns names in table.
     label.Properties.VariableNames = {'Start', 'Stop', 'Label'};
     
+    % Ucitavanje odgovarajuæeg audio zapisa.
     [samples, sampling_frequency] = audioread(file_name_wav);
 
     % Faktor kojim se množe vremena zvukova kako bi se dobil broj uzorka.
     time_factor = sampling_frequency * 0.1e-6;
     window_width = sampling_frequency * 20e-3;
     window_half_width = window_width  / 2;
+    
+    % prozorska funkcija
+    prozor = hamming(window_width);
 
     for index_zvuk = 1:size(label, 1)
         % Comparing two strings. strcmp(s1, s2)
@@ -92,6 +96,8 @@ for index_file = 1:size(file_list, 1)
             sample_stop = label.Stop(index_zvuk)* time_factor;
             sample_delta = sample_stop - sample_start;
 
+            % provjera dali je odsjeèak dovoljno dug za analizu. Ako nije
+            % onda je odbaèen.
             if sample_delta >= window_width
                 djelj = idivide(sample_delta, window_half_width);
                 ostatak = rem(sample_delta, window_half_width);
@@ -99,8 +105,8 @@ for index_file = 1:size(file_list, 1)
                 
                 for index_sample = 0:broj_koraka
                     start = sample_start + index_sample * window_half_width;
-                    stop = start + window_width;
-                    [lpc_koef, greska] = lpc(samples(start:stop), 96);
+                    stop = start + window_width - 1;
+                    [lpc_koef, greska] = lpc(samples(start:stop) .* prozor, koef_n);
                     
                     if strcmp(fonem, 'a')
                         slovo_a(index_lpc_aeiou(1), :) = lpc_koef;
@@ -126,7 +132,7 @@ for index_file = 1:size(file_list, 1)
                 end
 
                 if ostatak > 0
-                    [lpc_koef, greska] = lpc(samples(start + ostatak:stop + ostatak), 96);
+                    [lpc_koef, greska] = lpc(samples(start + ostatak:stop + ostatak) .* prozor, koef_n);
                     if strcmp(fonem, 'a')
                         slovo_a(index_lpc_aeiou(1), :) = lpc_koef;
                         index_lpc_aeiou(1) = index_lpc_aeiou(1) + 1;
@@ -155,9 +161,9 @@ for index_file = 1:size(file_list, 1)
         end
     end
 end
-disp('Kraj proracuna.')
 disp('Broj preskoèenih samoglasnika jer su prekratki')
 disp(skip)
+disp('Kraj proracuna. Spreman rezultate.')
 
 %% Izrezivanje neiskorištenoga dijela arraya
 slovo_a = slovo_a(1:index_lpc_aeiou(1) - 1, :);
