@@ -12,9 +12,9 @@ disp('Pocetak analize. Estimacija potrebne memorije koju treba zauzeti.')
 koef_n = 24;
 skip = 0;
 
-index_lpc_aeiou = ones(1, 5);
+index_lpc_aeiou = ones(1, 10);
 %% pred prolaz kroz fajlove da se odredi broj samoglsnika
-counter_aeiou = zeros(1,5);
+counter_aeiou = zeros(1, 10);
 file_list = dir('sm04_lab/*.lab');
 for index_file = 1:size(file_list, 1)
     file_name_lab = strcat('sm04_lab/', file_list(index_file).name);
@@ -30,17 +30,36 @@ for index_file = 1:size(file_list, 1)
     for index_zvuk = 1:size(label, 1)
         % Comparing two strings. strcmp(s1, s2)
         % Find all [samoglasnik] fonems in label file.
-        fonem = strrep(label.Label(index_zvuk), ':', '');
+        fonem = label.Label(index_zvuk);
         if strcmp(fonem, 'a')
             counter_aeiou(1) = counter_aeiou(1) + 1;
+            
         elseif strcmp(fonem, 'e')
             counter_aeiou(2) = counter_aeiou(2) + 1;
+            
         elseif strcmp(fonem, 'i')
             counter_aeiou(3) = counter_aeiou(3) + 1;
+            
         elseif strcmp(fonem, 'o')
             counter_aeiou(4) = counter_aeiou(4) + 1;
+            
         elseif strcmp(fonem, 'u')
             counter_aeiou(5) = counter_aeiou(5) + 1;
+            
+        elseif strcmp(fonem, 'a:')
+            counter_aeiou(6) = counter_aeiou(6) + 1;
+            
+        elseif strcmp(fonem, 'e:')
+            counter_aeiou(7) = counter_aeiou(7) + 1;
+            
+        elseif strcmp(fonem, 'i:')
+            counter_aeiou(8) = counter_aeiou(8) + 1;
+            
+        elseif strcmp(fonem, 'o:')
+            counter_aeiou(9) = counter_aeiou(9) + 1;
+            
+        elseif strcmp(fonem, 'u:')
+            counter_aeiou(10) = counter_aeiou(10) + 1;
         end
     end
 end
@@ -53,6 +72,12 @@ slovo_e = zeros(counter_aeiou(2), koef_n + 1);
 slovo_i = zeros(counter_aeiou(3), koef_n + 1);
 slovo_o = zeros(counter_aeiou(4), koef_n + 1);
 slovo_u = zeros(counter_aeiou(5), koef_n + 1);
+
+slovo_aa = zeros(counter_aeiou(6), koef_n + 1);
+slovo_ee = zeros(counter_aeiou(7), koef_n + 1);
+slovo_ii = zeros(counter_aeiou(8), koef_n + 1);
+slovo_oo = zeros(counter_aeiou(9), koef_n + 1);
+slovo_uu = zeros(counter_aeiou(10), koef_n + 1);
 %%
 disp('Proracun lpc-a.')
 for index_file = 1:size(file_list, 1)
@@ -85,12 +110,17 @@ for index_file = 1:size(file_list, 1)
     for index_zvuk = 1:size(label, 1)
         % Comparing two strings. strcmp(s1, s2)
         % Find all [samoglasnik] fonems in label file.
-        fonem = strrep(label.Label(index_zvuk), ':', '');
+        fonem = label.Label(index_zvuk);
         if strcmp(fonem, 'a') || ...
                 strcmp(fonem, 'e') || ...
                 strcmp(fonem, 'i') || ...
                 strcmp(fonem, 'o') || ...
-                strcmp(fonem, 'u')
+                strcmp(fonem, 'u') || ...
+                strcmp(fonem, 'a:') || ...
+                strcmp(fonem, 'e:') || ...
+                strcmp(fonem, 'i:') || ...
+                strcmp(fonem, 'o:') || ...
+                strcmp(fonem, 'u:')
 
             sample_start = label.Start(index_zvuk) * time_factor;
             sample_stop = label.Stop(index_zvuk)* time_factor;
@@ -128,6 +158,25 @@ for index_file = 1:size(file_list, 1)
                         slovo_u(index_lpc_aeiou(5), :) = lpc_koef;
                         index_lpc_aeiou(5) = index_lpc_aeiou(5) + 1;
                         
+                    elseif strcmp(fonem, 'a:')
+                        slovo_aa(index_lpc_aeiou(6), :) = lpc_koef;
+                        index_lpc_aeiou(6) = index_lpc_aeiou(6) + 1;
+                        
+                    elseif strcmp(fonem, 'e:')
+                        slovo_ee(index_lpc_aeiou(7), :) = lpc_koef;
+                        index_lpc_aeiou(7) = index_lpc_aeiou(7) + 1;
+                        
+                    elseif strcmp(fonem, 'i:')
+                        slovo_ii(index_lpc_aeiou(8), :) = lpc_koef;
+                        index_lpc_aeiou(8) = index_lpc_aeiou(8) + 1;
+                        
+                    elseif strcmp(fonem, 'o:')
+                        slovo_oo(index_lpc_aeiou(9), :) = lpc_koef;
+                        index_lpc_aeiou(9) = index_lpc_aeiou(9) + 1;
+                        
+                    elseif strcmp(fonem, 'u:')
+                        slovo_uu(index_lpc_aeiou(10), :) = lpc_koef;
+                        index_lpc_aeiou(10) = index_lpc_aeiou(10) + 1;
                     end
                 end
 
@@ -153,6 +202,25 @@ for index_file = 1:size(file_list, 1)
                         slovo_u(index_lpc_aeiou(5), :) = lpc_koef;
                         index_lpc_aeiou(5) = index_lpc_aeiou(5) + 1;
                         
+                    elseif strcmp(fonem, 'a:')
+                        slovo_aa(index_lpc_aeiou(6), :) = lpc_koef;
+                        index_lpc_aeiou(6) = index_lpc_aeiou(6) + 1;
+                        
+                    elseif strcmp(fonem, 'e:')
+                        slovo_ee(index_lpc_aeiou(7), :) = lpc_koef;
+                        index_lpc_aeiou(7) = index_lpc_aeiou(7) + 1;
+                        
+                    elseif strcmp(fonem, 'i:')
+                        slovo_ii(index_lpc_aeiou(8), :) = lpc_koef;
+                        index_lpc_aeiou(8) = index_lpc_aeiou(8) + 1;
+                        
+                    elseif strcmp(fonem, 'o:')
+                        slovo_oo(index_lpc_aeiou(9), :) = lpc_koef;
+                        index_lpc_aeiou(9) = index_lpc_aeiou(9) + 1;
+                        
+                    elseif strcmp(fonem, 'u:')
+                        slovo_uu(index_lpc_aeiou(10), :) = lpc_koef;
+                        index_lpc_aeiou(10) = index_lpc_aeiou(10) + 1;
                     end
                 end
             else
@@ -172,8 +240,14 @@ slovo_i = slovo_i(1:index_lpc_aeiou(3) - 1, :);
 slovo_o = slovo_o(1:index_lpc_aeiou(4) - 1, :);
 slovo_u = slovo_u(1:index_lpc_aeiou(5) - 1, :);
 
+slovo_aa = slovo_aa(1:index_lpc_aeiou(6) - 1, :);
+slovo_ee = slovo_ee(1:index_lpc_aeiou(7) - 1, :);
+slovo_ii = slovo_ii(1:index_lpc_aeiou(8) - 1, :);
+slovo_oo = slovo_oo(1:index_lpc_aeiou(9) - 1, :);
+slovo_uu = slovo_uu(1:index_lpc_aeiou(10) - 1, :);
+
 %% Spremanje rezultata u datoteke
 
-save('lpc\lpc_pro.mat', 'slovo_a', 'slovo_e', 'slovo_i', 'slovo_o', 'slovo_u', 'sampling_frequency')
+save('lpc\lpc_pro.mat', 'slovo_a', 'slovo_e', 'slovo_i', 'slovo_o', 'slovo_u', 'slovo_aa', 'slovo_ee', 'slovo_ii', 'slovo_oo', 'slovo_uu', 'sampling_frequency')
 disp('Podatci pohranjeni. Gotovo!')
 

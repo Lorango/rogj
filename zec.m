@@ -206,7 +206,7 @@ print('slike/novo/U f_1 f_3','-dpng')
 close all
 figure
 scatter(f_a(:, 2), f_a(:, 3), 'r.')
-xlim([0, 1400]) % Hz
+xlim([0, 2500]) % Hz
 ylim([0, 3000]) % Hz
 title('A f_2 f_3')
 xlabel('f_2 [Hz]')
@@ -216,7 +216,7 @@ print('slike/novo/A f_2 f_3','-dpng')
 
 figure
 scatter(f_e(:, 2), f_e(:, 3), 'b.')
-xlim([0, 1400]) % Hz
+xlim([0, 2500]) % Hz
 ylim([0, 3000]) % Hz
 title('E f_2 f_3')
 xlabel('f_2 [Hz]')
@@ -226,7 +226,7 @@ print('slike/novo/E f_2 f_3','-dpng')
 
 figure
 scatter(f_i(:, 2), f_i(:, 3), 'y.')
-xlim([0, 1400]) % Hz
+xlim([0, 2500]) % Hz
 ylim([0, 3000]) % Hz
 title('I f_2 f_3')
 xlabel('f_2 [Hz]')
@@ -236,7 +236,7 @@ print('slike/novo/I f_2 f_3','-dpng')
 
 figure
 scatter(f_o(:, 2), f_o(:, 3), 'g.')
-xlim([0, 1400]) % Hz
+xlim([0, 2500]) % Hz
 ylim([0, 3000]) % Hz
 title('O f_2 f_3')
 xlabel('f_2 [Hz]')
@@ -246,7 +246,7 @@ print('slike/novo/O f_2 f_3','-dpng')
 
 figure
 scatter(f_u(:, 2), f_u(:, 3), 'k.')
-xlim([0, 1400]) % Hz
+xlim([0, 2500]) % Hz
 ylim([0, 3000]) % Hz
 title('U f_2 f_3')
 xlabel('f_2 [Hz]')
@@ -298,3 +298,4 @@ print('slike/novo/U f_2 f_3','-dpng')
 % grid on
 
 %% save
+save('formanti\f_pro.mat', 'f_a', 'f_e', 'f_i', 'f_o', 'f_u')
