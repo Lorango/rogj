@@ -192,159 +192,53 @@ end
 
 %% plotanje formanti f1 f2
 close all
-figure
-scatter(f_a(:, 1), f_a(:, 2), 'r.')
-xlim([0, 1400]) % Hz
-ylim([0, 2500]) % Hz
-title('A f_1 f_2')
-xlabel('f_1 [Hz]')
-ylabel('f_2 [Hz]')
-grid on
-print('slike/novo/A f_1 f_2','-dpng')
+% prikaz x
+prikaz_ff(f_a, 'a', 1, 2, 'r', 1400, 2500, true, true)
+prikaz_ff(f_e, 'e', 1, 2, 'g', 1400, 2500, true, true)
+prikaz_ff(f_i, 'i', 1, 2, 'b', 1400, 2500, true, true)
+prikaz_ff(f_o, 'o', 1, 2, [0, 0.5, 1], 1400, 2500, true, true)
+prikaz_ff(f_u, 'u', 1, 2, [1, 0.5, 0], 1400, 2500, true, true)
+% prikaz x:
 
-figure
-scatter(f_e(:, 1), f_e(:, 2), 'b.')
-xlim([0, 1400]) % Hz
-ylim([0, 2500]) % Hz
-title('E f_1 f_2')
-xlabel('f_1 [Hz]')
-ylabel('f_2 [Hz]')
-grid on
-print('slike/novo/E f_1 f_2','-dpng')
-
-figure
-scatter(f_i(:, 1), f_i(:, 2), 'y.')
-xlim([0, 1400]) % Hz
-ylim([0, 2500]) % Hz
-title('I f_1 f_2')
-xlabel('f_1 [Hz]')
-ylabel('f_2 [Hz]')
-grid on
-print('slike/novo/I f_1 f_2','-dpng')
-
-figure
-scatter(f_o(:, 1), f_o(:, 2), 'g.')
-xlim([0, 1400]) % Hz
-ylim([0, 2500]) % Hz
-title('O f_1 f_2')
-xlabel('f_1 [Hz]')
-ylabel('f_2 [Hz]')
-grid on
-print('slike/novo/O f_1 f_2','-dpng')
-
-figure
-scatter(f_u(:, 1), f_u(:, 2), 'k.')
-xlim([0, 1400]) % Hz
-ylim([0, 2500]) % Hz
-title('U f_1 f_2')
-xlabel('f_1 [Hz]')
-ylabel('f_2 [Hz]')
-grid on
-print('slike/novo/U f_1 f_2','-dpng')
+prikaz_ff(f_aa, 'aa', 1, 2, 'b', 1400, 2500, true, true)
+prikaz_ff(f_ee, 'ee', 1, 2, 'r', 1400, 2500, true, true)
+prikaz_ff(f_ii, 'ii', 1, 2, 'b', 1400, 2500, true, true)
+prikaz_ff(f_oo, 'oo', 1, 2, [0, 0.5, 1], 1400, 2500, true, true)
+prikaz_ff(f_uu, 'uu', 1, 2, [1, 0.5, 0], 1400, 2500, true, true)
 
 %% plotanje formanti f1 f3
 close all
-figure
-scatter(f_a(:, 1), f_a(:, 3), 'r.')
-xlim([0, 1400]) % Hz
-ylim([0, 3000]) % Hz
-title('A f_1 f_3')
-xlabel('f_1 [Hz]')
-ylabel('f_3 [Hz]')
-grid on
-print('slike/novo/A f_1 f_3','-dpng')
 
-figure
-scatter(f_e(:, 1), f_e(:, 3), 'b.')
-xlim([0, 1400]) % Hz
-ylim([0, 3000]) % Hz
-title('E f_1 f_3')
-xlabel('f_1 [Hz]')
-ylabel('f_3 [Hz]')
-grid on
-print('slike/novo/E f_1 f_3','-dpng')
+% prikaz x
+prikaz_ff(f_a, 'a', 1, 3, 'b', 1400, 3000, true, true)
+prikaz_ff(f_e, 'e', 1, 3, 'r', 1400, 3000, true, true)
+prikaz_ff(f_i, 'i', 1, 3, 'b', 1400, 3000, true, true)
+prikaz_ff(f_o, 'o', 1, 3, [0, 0.5, 1], 1400, 3000, true, true)
+prikaz_ff(f_u, 'u', 1, 3, [1, 0.5, 0], 1400, 3000, true, true)
 
-figure
-scatter(f_i(:, 1), f_i(:, 3), 'y.')
-xlim([0, 1400]) % Hz
-ylim([0, 3000]) % Hz
-title('I f_1 f_3')
-xlabel('f_1 [Hz]')
-ylabel('f_3 [Hz]')
-grid on
-print('slike/novo/I f_1 f_3','-dpng')
-
-figure
-scatter(f_o(:, 1), f_o(:, 3), 'g.')
-xlim([0, 1400]) % Hz
-ylim([0, 3000]) % Hz
-title('O f_1 f_3')
-xlabel('f_1 [Hz]')
-ylabel('f_3 [Hz]')
-grid on
-print('slike/novo/O f_1 f_3','-dpng')
-
-figure
-scatter(f_u(:, 1), f_u(:, 3), 'k.')
-xlim([0, 1400]) % Hz
-ylim([0, 3000]) % Hz
-title('U f_1 f_3')
-xlabel('f_1 [Hz]')
-ylabel('f_3 [Hz]')
-grid on
-print('slike/novo/U f_1 f_3','-dpng')
+% prikaz x:
+prikaz_ff(f_aa, 'aa', 1, 3, 'b', 1400, 3000, true, true)
+prikaz_ff(f_ee, 'ee', 1, 3, 'r', 1400, 3000, true, true)
+prikaz_ff(f_ii, 'ii', 1, 3, 'b', 1400, 3000, true, true)
+prikaz_ff(f_oo, 'oo', 1, 3, [0, 0.5, 1], 1400, 3000, true, true)
+prikaz_ff(f_uu, 'uu', 1, 3, [1, 0.5, 0], 1400, 3000, true, true)
 
 %% plotanje formanti f2 f3
 close all
-figure
-scatter(f_a(:, 2), f_a(:, 3), 'r.')
-xlim([0, 2500]) % Hz
-ylim([0, 3000]) % Hz
-title('A f_2 f_3')
-xlabel('f_2 [Hz]')
-ylabel('f_3 [Hz]')
-grid on
-print('slike/novo/A f_2 f_3','-dpng')
 
-figure
-scatter(f_e(:, 2), f_e(:, 3), 'b.')
-xlim([0, 2500]) % Hz
-ylim([0, 3000]) % Hz
-title('E f_2 f_3')
-xlabel('f_2 [Hz]')
-ylabel('f_3 [Hz]')
-grid on
-print('slike/novo/E f_2 f_3','-dpng')
+% prikaz x
+prikaz_ff(f_a, 'a', 2, 3, 'b', 2500, 3000, true, true)
+prikaz_ff(f_e, 'e', 2, 3, 'r', 2500, 3000, true, true)
+prikaz_ff(f_i, 'i', 2, 3, 'b', 2500, 3000, true, true)
+prikaz_ff(f_o, 'o', 2, 3, [0, 0.5, 1], 2500, 3000, true, true)
+prikaz_ff(f_u, 'u', 2, 3, [1, 0.5, 0], 2500, 3000, true, true)
 
-figure
-scatter(f_i(:, 2), f_i(:, 3), 'y.')
-xlim([0, 2500]) % Hz
-ylim([0, 3000]) % Hz
-title('I f_2 f_3')
-xlabel('f_2 [Hz]')
-ylabel('f_3 [Hz]')
-grid on
-print('slike/novo/I f_2 f_3','-dpng')
-
-figure
-scatter(f_o(:, 2), f_o(:, 3), 'g.')
-xlim([0, 2500]) % Hz
-ylim([0, 3000]) % Hz
-title('O f_2 f_3')
-xlabel('f_2 [Hz]')
-ylabel('f_3 [Hz]')
-grid on
-print('slike/novo/O f_2 f_3','-dpng')
-
-figure
-scatter(f_u(:, 2), f_u(:, 3), 'k.')
-xlim([0, 2500]) % Hz
-ylim([0, 3000]) % Hz
-title('U f_2 f_3')
-xlabel('f_2 [Hz]')
-ylabel('f_3 [Hz]')
-grid on
-print('slike/novo/U f_2 f_3','-dpng')
+% prikaz x:
+prikaz_ff(f_aa, 'aa', 1, 3, 'b', 2500, 3000, true, true)
+prikaz_ff(f_ee, 'ee', 1, 3, 'r', 2500, 3000, true, true)
+prikaz_ff(f_ii, 'ii', 1, 3, 'b', 2500, 3000, true, true)
+prikaz_ff(f_oo, 'oo', 1, 3, [0, 0.5, 1], 2500, 3000, true, true)
+prikaz_ff(f_uu, 'uu', 1, 3, [1, 0.5, 0], 2500, 3000, true, true)
 
 %% 
 % scatter3(f_a(:, 1), f_a(:, 2), f_a(:, 3), '.')
@@ -391,175 +285,3 @@ print('slike/novo/U f_2 f_3','-dpng')
 
 %% save
 save('formanti\f_pro.mat', 'f_a', 'f_e', 'f_i', 'f_o', 'f_u', 'f_aa', 'f_ee', 'f_ii', 'f_oo', 'f_uu')
-
-%%
-%% usporedba x x: plotanje formanti f1 f2
-close all
-figure
-hold on
-scatter(f_a(:, 1), f_a(:, 2), 'r.')
-scatter(f_aa(:, 1), f_aa(:, 2), 'b.')
-xlim([0, 1400]) % Hz
-ylim([0, 2500]) % Hz
-title('A f_1 f_2')
-xlabel('f_1 [Hz]')
-ylabel('f_2 [Hz]')
-grid on
-
-figure
-hold on
-scatter(f_e(:, 1), f_e(:, 2), 'r.')
-scatter(f_ee(:, 1), f_ee(:, 2), 'b.')
-xlim([0, 1400]) % Hz
-ylim([0, 2500]) % Hz
-title('A f_1 f_2')
-xlabel('f_1 [Hz]')
-ylabel('f_2 [Hz]')
-grid on
-
-figure
-hold on
-scatter(f_i(:, 1), f_i(:, 2), 'r.')
-scatter(f_ii(:, 1), f_ii(:, 2), 'b.')
-xlim([0, 1400]) % Hz
-ylim([0, 2500]) % Hz
-title('A f_1 f_2')
-xlabel('f_1 [Hz]')
-ylabel('f_2 [Hz]')
-grid on
-
-figure
-hold on
-scatter(f_o(:, 1), f_o(:, 2), 'r.')
-scatter(f_oo(:, 1), f_oo(:, 2), 'b.')
-xlim([0, 1400]) % Hz
-ylim([0, 2500]) % Hz
-title('A f_1 f_2')
-xlabel('f_1 [Hz]')
-ylabel('f_2 [Hz]')
-grid on
-
-figure
-hold on
-scatter(f_u(:, 1), f_u(:, 2), 'r.')
-scatter(f_uu(:, 1), f_uu(:, 2), 'b.')
-xlim([0, 1400]) % Hz
-ylim([0, 2500]) % Hz
-title('A f_1 f_2')
-xlabel('f_1 [Hz]')
-ylabel('f_2 [Hz]')
-grid on
-
-%% usporedba x x: plotanje formanti f1 f3
-close all
-figure
-hold on
-scatter(f_a(:, 1), f_a(:, 3), 'r.')
-scatter(f_aa(:, 1), f_aa(:, 3), 'b.')
-xlim([0, 1400]) % Hz
-ylim([0, 3000]) % Hz
-title('A f_1 f_2')
-xlabel('f_1 [Hz]')
-ylabel('f_2 [Hz]')
-grid on
-
-figure
-hold on
-scatter(f_e(:, 1), f_e(:, 3), 'r.')
-scatter(f_ee(:, 1), f_ee(:, 3), 'b.')
-xlim([0, 1400]) % Hz
-ylim([0, 3000]) % Hz
-title('A f_1 f_2')
-xlabel('f_1 [Hz]')
-ylabel('f_2 [Hz]')
-grid on
-
-figure
-hold on
-scatter(f_i(:, 1), f_i(:, 3), 'r.')
-scatter(f_ii(:, 1), f_ii(:, 3), 'b.')
-xlim([0, 1400]) % Hz
-ylim([0, 3000]) % Hz
-title('A f_1 f_2')
-xlabel('f_1 [Hz]')
-ylabel('f_2 [Hz]')
-grid on
-
-figure
-hold on
-scatter(f_o(:, 1), f_o(:, 3), 'r.')
-scatter(f_oo(:, 1), f_oo(:, 3), 'b.')
-xlim([0, 1400]) % Hz
-ylim([0, 3000]) % Hz
-title('A f_1 f_2')
-xlabel('f_1 [Hz]')
-ylabel('f_2 [Hz]')
-grid on
-
-figure
-hold on
-scatter(f_u(:, 1), f_u(:, 3), 'r.')
-scatter(f_uu(:, 1), f_uu(:, 3), 'b.')
-xlim([0, 1400]) % Hz
-ylim([0, 3000]) % Hz
-title('A f_1 f_2')
-xlabel('f_1 [Hz]')
-ylabel('f_2 [Hz]')
-grid on
-
-%% usporedba x x: plotanje formanti f2 f3
-close all
-figure
-hold on
-scatter(f_a(:, 2), f_a(:, 3), 'r.')
-scatter(f_aa(:, 2), f_aa(:, 3), 'b.')
-xlim([0, 1400]) % Hz
-ylim([0, 3000]) % Hz
-title('A f_1 f_2')
-xlabel('f_1 [Hz]')
-ylabel('f_2 [Hz]')
-grid on
-
-figure
-hold on
-scatter(f_e(:, 2), f_e(:, 3), 'r.')
-scatter(f_ee(:, 2), f_ee(:, 3), 'b.')
-xlim([0, 1400]) % Hz
-ylim([0, 3000]) % Hz
-title('A f_1 f_2')
-xlabel('f_1 [Hz]')
-ylabel('f_2 [Hz]')
-grid on
-
-figure
-hold on
-scatter(f_i(:, 2), f_i(:, 3), 'r.')
-scatter(f_ii(:, 2), f_ii(:, 3), 'b.')
-xlim([0, 1400]) % Hz
-ylim([0, 3000]) % Hz
-title('A f_1 f_2')
-xlabel('f_1 [Hz]')
-ylabel('f_2 [Hz]')
-grid on
-
-figure
-hold on
-scatter(f_o(:, 2), f_o(:, 3), 'r.')
-scatter(f_oo(:, 2), f_oo(:, 3), 'b.')
-xlim([0, 1400]) % Hz
-ylim([0, 3000]) % Hz
-title('A f_1 f_2')
-xlabel('f_1 [Hz]')
-ylabel('f_2 [Hz]')
-grid on
-
-figure
-hold on
-scatter(f_u(:, 2), f_u(:, 3), 'r.')
-scatter(f_uu(:, 2), f_uu(:, 3), 'b.')
-xlim([0, 1400]) % Hz
-ylim([0, 3000]) % Hz
-title('A f_1 f_2')
-xlabel('f_1 [Hz]')
-ylabel('f_2 [Hz]')
-grid on
