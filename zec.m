@@ -192,53 +192,132 @@ end
 
 %% plotanje formanti f1 f2
 close all
+
 % prikaz x
 prikaz_ff(f_a, 'a', 1, 2, 'r', 1400, 2500, true, true)
 prikaz_ff(f_e, 'e', 1, 2, 'g', 1400, 2500, true, true)
 prikaz_ff(f_i, 'i', 1, 2, 'b', 1400, 2500, true, true)
 prikaz_ff(f_o, 'o', 1, 2, [0, 0.5, 1], 1400, 2500, true, true)
 prikaz_ff(f_u, 'u', 1, 2, [1, 0.5, 0], 1400, 2500, true, true)
-% prikaz x:
 
-prikaz_ff(f_aa, 'aa', 1, 2, 'b', 1400, 2500, true, true)
-prikaz_ff(f_ee, 'ee', 1, 2, 'r', 1400, 2500, true, true)
+% prikaz x:
+prikaz_ff(f_aa, 'aa', 1, 2, 'r', 1400, 2500, true, true)
+prikaz_ff(f_ee, 'ee', 1, 2, 'g', 1400, 2500, true, true)
 prikaz_ff(f_ii, 'ii', 1, 2, 'b', 1400, 2500, true, true)
 prikaz_ff(f_oo, 'oo', 1, 2, [0, 0.5, 1], 1400, 2500, true, true)
 prikaz_ff(f_uu, 'uu', 1, 2, [1, 0.5, 0], 1400, 2500, true, true)
+
+% prikaz x i x:
+prikaz_ff(f_a, 'a', 1, 2, 'r', 1400, 2500, false, true)
+prikaz_ff(f_aa, 'aa', 1, 2, 'b', 1400, 2500, false, false)
+title('a, a: f_1 f_2')
+print('slike/novo/aaa f_1 f_2', '-dpng')
+
+prikaz_ff(f_e, 'e', 1, 2, 'r', 1400, 2500, false, true)
+prikaz_ff(f_ee, 'ee', 1, 2, 'b', 1400, 2500, false, false)
+title('e, e: f_1 f_2')
+print('slike/novo/eee f_1 f_2', '-dpng')
+
+prikaz_ff(f_i, 'i', 1, 2, 'r', 1400, 2500, false, true)
+prikaz_ff(f_ii, 'ii', 1, 2, 'b', 1400, 2500, false, false)
+title('i, i: f_1 f_2')
+print('slike/novo/iii f_1 f_2', '-dpng')
+
+prikaz_ff(f_o, 'o', 1, 2, 'r', 1400, 2500, false, true)
+prikaz_ff(f_oo, 'oo', 1, 2, 'b', 1400, 2500, false, false)
+title('o, o: f_1 f_2')
+print('slike/novo/ooo f_1 f_2', '-dpng')
+
+prikaz_ff(f_u, 'u', 1, 2, 'r', 1400, 2500, false, true)
+prikaz_ff(f_uu, 'uu', 1, 2, 'b', 1400, 2500, false, false)
+title('u, u: f_1 f_2')
+print('slike/novo/uuu f_1 f_2', '-dpng')
 
 %% plotanje formanti f1 f3
 close all
 
 % prikaz x
-prikaz_ff(f_a, 'a', 1, 3, 'b', 1400, 3000, true, true)
-prikaz_ff(f_e, 'e', 1, 3, 'r', 1400, 3000, true, true)
+prikaz_ff(f_a, 'a', 1, 3, 'r', 1400, 3000, true, true)
+prikaz_ff(f_e, 'e', 1, 3, 'g', 1400, 3000, true, true)
 prikaz_ff(f_i, 'i', 1, 3, 'b', 1400, 3000, true, true)
 prikaz_ff(f_o, 'o', 1, 3, [0, 0.5, 1], 1400, 3000, true, true)
 prikaz_ff(f_u, 'u', 1, 3, [1, 0.5, 0], 1400, 3000, true, true)
 
 % prikaz x:
-prikaz_ff(f_aa, 'aa', 1, 3, 'b', 1400, 3000, true, true)
-prikaz_ff(f_ee, 'ee', 1, 3, 'r', 1400, 3000, true, true)
+prikaz_ff(f_aa, 'aa', 1, 3, 'r', 1400, 3000, true, true)
+prikaz_ff(f_ee, 'ee', 1, 3, 'g', 1400, 3000, true, true)
 prikaz_ff(f_ii, 'ii', 1, 3, 'b', 1400, 3000, true, true)
 prikaz_ff(f_oo, 'oo', 1, 3, [0, 0.5, 1], 1400, 3000, true, true)
 prikaz_ff(f_uu, 'uu', 1, 3, [1, 0.5, 0], 1400, 3000, true, true)
+
+% prikaz x i x:
+prikaz_ff(f_a, 'a', 1, 3, 'r', 1400, 3000, false, true)
+prikaz_ff(f_aa, 'aa', 1, 3, 'b', 1400, 3000, false, false)
+title('a, a: f_1 f_3')
+print('slike/novo/aaa f_1 f_3', '-dpng')
+
+prikaz_ff(f_e, 'e', 1, 3, 'r', 1400, 3000, false, true)
+prikaz_ff(f_ee, 'ee', 1, 3, 'b', 1400, 3000, false, false)
+title('e, e: f_1 f_3')
+print('slike/novo/eee f_1 f_3', '-dpng')
+
+prikaz_ff(f_i, 'i', 1, 3, 'r', 1400, 3000, false, true)
+prikaz_ff(f_ii, 'ii', 1, 3, 'b', 1400, 3000, false, false)
+title('i, i: f_1 f_3')
+print('slike/novo/iii f_1 f_3', '-dpng')
+
+prikaz_ff(f_o, 'o', 1, 3, 'r', 1400, 3000, false, true)
+prikaz_ff(f_oo, 'oo', 1, 3, 'b', 1400, 3000, false, false)
+title('o, o: f_1 f_3')
+print('slike/novo/ooo f_1 f_3', '-dpng')
+
+prikaz_ff(f_u, 'u', 1, 3, 'r', 1400, 3000, false, true)
+prikaz_ff(f_uu, 'uu', 1, 3, 'b', 1400, 3000, false, false)
+title('u, u: f_1 f_3')
+print('slike/novo/uuu f_1 f_3', '-dpng')
 
 %% plotanje formanti f2 f3
 close all
 
 % prikaz x
-prikaz_ff(f_a, 'a', 2, 3, 'b', 2500, 3000, true, true)
-prikaz_ff(f_e, 'e', 2, 3, 'r', 2500, 3000, true, true)
+prikaz_ff(f_a, 'a', 2, 3, 'r', 2500, 3000, true, true)
+prikaz_ff(f_e, 'e', 2, 3, 'g', 2500, 3000, true, true)
 prikaz_ff(f_i, 'i', 2, 3, 'b', 2500, 3000, true, true)
 prikaz_ff(f_o, 'o', 2, 3, [0, 0.5, 1], 2500, 3000, true, true)
 prikaz_ff(f_u, 'u', 2, 3, [1, 0.5, 0], 2500, 3000, true, true)
 
 % prikaz x:
-prikaz_ff(f_aa, 'aa', 1, 3, 'b', 2500, 3000, true, true)
-prikaz_ff(f_ee, 'ee', 1, 3, 'r', 2500, 3000, true, true)
-prikaz_ff(f_ii, 'ii', 1, 3, 'b', 2500, 3000, true, true)
-prikaz_ff(f_oo, 'oo', 1, 3, [0, 0.5, 1], 2500, 3000, true, true)
-prikaz_ff(f_uu, 'uu', 1, 3, [1, 0.5, 0], 2500, 3000, true, true)
+prikaz_ff(f_aa, 'aa', 2, 3, 'r', 2500, 3000, true, true)
+prikaz_ff(f_ee, 'ee', 2, 3, 'g', 2500, 3000, true, true)
+prikaz_ff(f_ii, 'ii', 2, 3, 'b', 2500, 3000, true, true)
+prikaz_ff(f_oo, 'oo', 2, 3, [0, 0.5, 1], 2500, 3000, true, true)
+prikaz_ff(f_uu, 'uu', 2, 3, [1, 0.5, 0], 2500, 3000, true, true)
+
+% prikaz x i x:
+prikaz_ff(f_a, 'a', 2, 3, 'r', 2500, 3000, false, true)
+prikaz_ff(f_aa, 'aa', 2, 3, 'b', 2500, 3000, false, false)
+title('a, a: f_2 f_3')
+print('slike/novo/aaa f_2 f_3', '-dpng')
+
+prikaz_ff(f_e, 'e', 2, 3, 'r', 2500, 3000, false, true)
+prikaz_ff(f_ee, 'ee', 2, 3, 'b', 2500, 3000, false, false)
+title('e, e: f_2 f_3')
+print('slike/novo/eee f_2 f_3', '-dpng')
+
+prikaz_ff(f_i, 'i', 2, 3, 'r', 2500, 3000, false, true)
+prikaz_ff(f_ii, 'ii', 2, 3, 'b', 2500, 3000, false, false)
+title('i, i: f_2 f_3')
+print('slike/novo/iii f_2 f_3', '-dpng')
+
+prikaz_ff(f_o, 'o', 2, 3, 'r', 2500, 3000, false, true)
+prikaz_ff(f_oo, 'oo', 2, 3, 'b', 2500, 3000, false, false)
+title('o, o: f_2 f_3')
+print('slike/novo/ooo f_2 f_3', '-dpng')
+
+prikaz_ff(f_u, 'u', 2, 3, 'r', 2500, 3000, false, true)
+prikaz_ff(f_uu, 'uu', 2, 3, 'b', 2500, 3000, false, false)
+title('u, u: f_2 f_3')
+print('slike/novo/uuu f_2 f_3', '-dpng')
 
 %% 
 % scatter3(f_a(:, 1), f_a(:, 2), f_a(:, 3), '.')
@@ -283,5 +362,5 @@ prikaz_ff(f_uu, 'uu', 1, 3, [1, 0.5, 0], 2500, 3000, true, true)
 % zlim([0, 3500]) % Hz
 % grid on
 
-%% save
+%% pohrani izraèunate formantne frekvencije
 save('formanti\f_pro.mat', 'f_a', 'f_e', 'f_i', 'f_o', 'f_u', 'f_aa', 'f_ee', 'f_ii', 'f_oo', 'f_uu')

@@ -4,6 +4,8 @@ function prikaz_ff( f_x, slovo, m, n, color, x_lim, y_lim, spremi, new_fig )
 
 if new_fig
     figure
+else
+    hold on
 end
 
 scatter(f_x(:, m), f_x(:, n), '.', 'MarkerEdgeColor', color)
