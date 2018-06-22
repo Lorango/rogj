@@ -319,48 +319,5 @@ prikaz_ff(f_uu, 'uu', 2, 3, 'b', 2500, 3000, false, false)
 title('u, u: f_2 f_3')
 print('slike/novo/uuu f_2 f_3', '-dpng')
 
-%% 
-% scatter3(f_a(:, 1), f_a(:, 2), f_a(:, 3), '.')
-% hold on
-% scatter3(f_e(:, 1), f_e(:, 2), f_e(:, 3), '.')
-% scatter3(f_i(:, 1), f_i(:, 2), f_i(:, 3), '.')
-% scatter3(f_o(:, 1), f_o(:, 2), f_o(:, 3), '.')
-% scatter3(f_u(:, 1), f_u(:, 2), f_u(:, 3), '.')
-% 
-% xlabel('f_1 [Hz]')
-% ylabel('f_2 [Hz]')
-% zlabel('f_3 [Hz]')
-% xlim([0, 1400]) % Hz
-% ylim([0, 2500]) % Hz
-% zlim([0, 3000]) % Hz
-% grid on
-% 
-%% outline
-% alfa = 0.8;
-% srinkk = 0;
-% k = boundary(f_a(:, 1), f_a(:, 2), f_a(:, 3), srinkk);
-% figure
-% trisurf(k, f_a(:, 1), f_a(:, 2), f_a(:, 3),'Facecolor','b','FaceAlpha', alfa, 'LineStyle', 'None')
-% hold on
-% k = boundary(f_e(:, 1), f_e(:, 2), f_e(:, 3), srinkk);
-% trisurf(k, f_e(:, 1), f_e(:, 2), f_e(:, 3),'Facecolor','r','FaceAlpha', alfa, 'LineStyle', 'None')
-% 
-% k = boundary(f_i(:, 1), f_i(:, 2), f_i(:, 3), srinkk);
-% trisurf(k, f_i(:, 1), f_i(:, 2), f_i(:, 3),'Facecolor','g','FaceAlpha', alfa, 'LineStyle', 'None')
-% 
-% k = boundary(f_o(:, 1), f_o(:, 2), f_o(:, 3), srinkk);
-% trisurf(k, f_o(:, 1), f_o(:, 2), f_o(:, 3),'Facecolor','y','FaceAlpha', alfa, 'LineStyle', 'None')
-% 
-% k = boundary(f_u(:, 1), f_u(:, 2), f_u(:, 3), srinkk);
-% trisurf(k, f_u(:, 1), f_u(:, 2), f_u(:, 3),'Facecolor','c','FaceAlpha', alfa, 'LineStyle', 'None')
-% 
-% xlabel('f_1 [Hz]')
-% ylabel('f_2 [Hz]')
-% zlabel('f_3 [Hz]')
-% xlim([0, 2000]) % Hz
-% ylim([0, 2500]) % Hz
-% zlim([0, 3500]) % Hz
-% grid on
-
 %% pohrani izraèunate formantne frekvencije
 save('formanti\f_pro.mat', 'f_a', 'f_e', 'f_i', 'f_o', 'f_u', 'f_aa', 'f_ee', 'f_ii', 'f_oo', 'f_uu')
