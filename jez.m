@@ -28,9 +28,6 @@ for i = 1:3
     legend('a', 'e', 'i', 'o', 'u')
 end
 
-%% asdasd
-gustoce = zeros(5, 3);
-gustoce_2 = zeros(5, 1);
 %% generiranje svih gustoæa vjerojatnosti
 for i = 1:5
     %% za svaki samoglasnik
@@ -48,9 +45,9 @@ rez = zeros(5, 5);
 for i = 1:5                             % za svako slovo*
     samoglasnik = cell2mat(aeiou(i));
     disp(i);
-    for j = 1:200%size(samoglasnik, 1)      % za svaki uzorak samoglasnika
+    for j = 1:size(samoglasnik, 1)      % za svaki uzorak samoglasnika
         gustoca_rez = zeros(5, 1);
-        if rem(j, 100) == 0    % pokazatelj napredka
+        if rem(j, 1000) == 0    % pokazatelj napredka
             disp(j)
         end
   
@@ -67,15 +64,13 @@ for i = 1:5                             % za svako slovo*
     end
 end
 
-%% analiza rezultata
+% analiza rezultata
 
 rez_p = zeros(5, 5);
 for i = 1:5
     suma = sum(rez(i, :));
     rez_p(i, :) = rez(i, :) ./ suma;
 end
-
-
 
 %%
 f = 3000;
