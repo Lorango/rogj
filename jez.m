@@ -12,7 +12,8 @@ BW = [20, 40, 40;
       20, 50, 40;
       20, 40, 40;
       20, 40, 40];
-%%
+  
+%% Plotanje funnkcija gustoæe distribucije vjerojatnosti
 for i = 1:3
     figure
     hold on
@@ -24,8 +25,54 @@ for i = 1:3
     end
     
     grid on
-    hold on
     legend('a', 'e', 'i', 'o', 'u')
+end
+
+%% asdasd
+gustoce = zeros(5, 3);
+gustoce_2 = zeros(5, 1);
+%% generiranje svih gustoæa vjerojatnosti
+for i = 1:5
+    %% za svaki samoglasnik
+    samoglasnik = cell2mat(aeiou(i));
+    for j = 1:3
+        %% za svaki formant
+        pdd(i, j) = fitdist(samoglasnik(:, j), 'Kernel','Kernel','epanechnikov','BandWidth', BW(i, j));
+    end
+end
+
+
+%% analiza slova
+rez = zeros(5, 5);
+
+for i = 1:5                             % za svako slovo*
+    samoglasnik = cell2mat(aeiou(i));
+    disp(i);
+    for j = 1:200%size(samoglasnik, 1)      % za svaki uzorak samoglasnika
+        gustoca_rez = zeros(5, 1);
+        if rem(j, 100) == 0    % pokazatelj napredka
+            disp(j)
+        end
+  
+        for k = 1:5                     % za svaki samoglasnik**
+            gustoca_slova = 1;
+            for m = 1:3                 % za svaki formant
+                gustoca_formanta = pdf(pdd(k, m), samoglasnik(j, m));
+                gustoca_slova = gustoca_slova * gustoca_formanta;
+            end
+            gustoca_rez(k) = gustoca_slova;
+        end
+        [M, I] = max(gustoca_rez);
+        rez(i, I) = rez(i, I) + 1;
+    end
+end
+
+%% analiza rezultata
+
+rez_p = zeros(5, 5);
+for i = 1:5
+    suma = sum(rez(i, :));
+    rez_p(i, :) = rez(i, :) ./ suma;
 end
 
 
